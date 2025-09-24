@@ -26,3 +26,6 @@ Plataforma de comunicación en tiempo real tipo chat, orientada a facilitar la c
  - XAMPP (PHP + MySQL) 
  - FRONTED WEB (HTML + CSS) 
  - Git + GitHub (control de versiones) 
+
+## Autor
+ - Ariel Vallejos Martínez ( @KraneoVallejos)
