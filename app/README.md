@@ -1,8 +1,8 @@
-# \# Módulo Patio Virtual - versión móvil, Aplicación Android
+# Módulo Patio Virtual - versión móvil, Aplicación Android
 
 
 
-## \## Descripción
+## Descripción
 
 
 
@@ -15,6 +15,4 @@ Implementación de aplicación Android:
 \- Orientada a ofrecer una alternativa más accesible a la plataforma desde dispositivos móviles.
 
 \- Desarrollada en Kotlin y XML.
-
-
 
