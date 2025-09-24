@@ -13,5 +13,10 @@ Plataforma de comunicación en tiempo real tipo chat, orientada a facilitar la c
 ## Estructura General del proyecto ( Carpetas y Módulos)
 
 
+
 -/ app : Código de app Android ( Kotlin + XML )
--/ backend : Scripts PHP, html, JavaScript, y base de datos MySQL (XAMPP) 
+
+
+
+-/ backend : Scripts PHP, JavaScript, y base de datos MySQL (XAMPP)
+
