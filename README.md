@@ -2,3 +2,9 @@
 
 ## Descripción
  Plataforma de comunicación en tiempo real tipo chat, orientada a facilitar la comunicación en entornos educativos asincrónicos
+
+## Objetivos del proyecto: 
+
+- Complementar plataformas educativas asincrónicas existentes 
+- Promover el aprendizaje significativo mediante comunicación efectiva 
+- Facilitar el acceso a la comunicación e información por medio de una interfaz accesible 
