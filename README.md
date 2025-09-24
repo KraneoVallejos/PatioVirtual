@@ -1,10 +1,17 @@
 # Proyecto Patio Virtual
 
 ## Descripción
- Plataforma de comunicación en tiempo real tipo chat, orientada a facilitar la comunicación en entornos educativos asincrónicos
 
-## Objetivos del proyecto: 
+Plataforma de comunicación en tiempo real tipo chat, orientada a facilitar la comunicación en entornos educativos asincrónicos
 
-- Complementar plataformas educativas asincrónicas existentes 
-- Promover el aprendizaje significativo mediante comunicación efectiva 
-- Facilitar el acceso a la comunicación e información por medio de una interfaz accesible 
+## Objetivos del proyecto:
+
+* Complementar plataformas educativas asincrónicas existentes
+* Promover el aprendizaje significativo mediante comunicación efectiva
+* Facilitar el acceso a la comunicación e información por medio de una interfaz accesible
+
+## Estructura General del proyecto ( Carpetas y Módulos)
+
+
+-/ app : Código de app Android ( Kotlin + XML )
+-/ backend : Scripts PHP, html, JavaScript, y base de datos MySQL (XAMPP) 
