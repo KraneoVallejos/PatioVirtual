@@ -20,3 +20,9 @@ Plataforma de comunicación en tiempo real tipo chat, orientada a facilitar la c
 
 -/ backend : Scripts PHP, JavaScript, y base de datos MySQL (XAMPP)
 
+
+## Tecnologías utilizadas
+ - Android Studio ( kotlin + XML) 
+ - XAMPP (PHP + MySQL) 
+ - FRONTED WEB (HTML + CSS) 
+ - Git + GitHub (control de versiones) 
