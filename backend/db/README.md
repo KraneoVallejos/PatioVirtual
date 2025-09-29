@@ -9,7 +9,8 @@ Este módulo contiene el archivo conexion.php:
 
 este archivo contiene credenciales genéricas y deben ser modificadas antes de ser utilizado
 
-`Antes de modificar los datos`
+## Antes de modificar los datos
+
 - mantener conexion.php fuera del control de versiones o utilizar .gitignore
 - Modifica las constantes con los datos reales de tu base de datos
 
