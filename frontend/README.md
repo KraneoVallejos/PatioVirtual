@@ -18,3 +18,10 @@ archivo: `iniciocorrecto.php`:
 
 - verifica si el usuario está autenticado antes de permitir el acceso a la vista
 - muestra la página tras un login exitoso
+
+archivo: `estilos.css`:
+
+- define el estilo visual de la interfaz
+- aplica estilos personalizados a los elementos HTML
+- permite visualizar la plataforrma en diferentes tamanos de pantalla
+
