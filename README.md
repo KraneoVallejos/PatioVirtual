@@ -2,13 +2,21 @@
 
 ## Descripción
 
-Plataforma de comunicación en tiempo real tipo chat, orientada a facilitar la comunicación en entornos educativos asincrónicos
+
+
+Plataforma de comunicación escrita en tiempo real de tipo chat, orientada a facilitar la comunicación en entornos educativos asincrónicos
+
+
 
 ## Objetivos del proyecto:
 
+
+
 * Complementar plataformas educativas asincrónicas existentes
-* Promover el aprendizaje significativo mediante comunicación efectiva
-* Facilitar el acceso a la comunicación e información por medio de una interfaz accesible
+* Promover el aprendizaje significativo mediante comunicación efectiva entre estudiantes y docentes
+* Facilitar el acceso a la comunicación e información por medio de una interfaz accesible multiplataforma (web y app Android)
+
+## 
 
 ## Estructura General del proyecto ( Carpetas y Módulos)
 
@@ -16,13 +24,11 @@ Plataforma de comunicación en tiempo real tipo chat, orientada a facilitar la c
 
 PatioVirtual/
 
-├──── README.md
+│   README.md
 
 │
 
 ├───app
-
-│       .gitkeep
 
 │       README.md
 
@@ -44,6 +50,12 @@ PatioVirtual/
 
 │   │       guardarmensaje.php
 
+│   │       login.php
+
+│   │       logout.php
+
+│   │       README.md
+
 │   │
 
 │   └───db
@@ -58,8 +70,6 @@ PatioVirtual/
 
 ├───docs
 
-│       .gitkeep
-
 │       arquitectura.md
 
 │       README.md
@@ -68,16 +78,25 @@ PatioVirtual/
 
 └───frontend
 
-&nbsp;       .gitkeep
+&nbsp;       estilos.css
+
+&nbsp;       iniciocorrecto.php
+
+&nbsp;       README.md
 
 
 
 ## Tecnologías utilizadas
 
-* Android Studio ( kotlin + XML)
-* XAMPP (PHP + MySQL)
-* FRONTED WEB (HTML + CSS)
-* Git + GitHub (control de versiones)
+
+
+* Android Studio ( kotlin + XML) 	-> desarrollo de app Patio Virtual versión móvil 
+* XAMPP (PHP + MySQL) 		-> Backend local, base de datos y API REST
+* AJAX (Fetch API) 			-> Peticiones asincrónicas al backend
+* FRONTED WEB (HTML + CSS) 		-> Interfaz web responsiva
+* Git + GitHub 			-> control de versiones
+
+
 
 ## Autor
 
