@@ -1,7 +1,7 @@
 # Módulo API de Patio Virtual
 
 ## Descripción
-Este módulo contiene todos los **scripts backend** gestionando todas las interacciones clave entre el usuario y la plataforma.
+Este módulo contiene todos los **scripts backend**, gestionando todas las interacciones clave entre el usuario y la plataforma.
 
 Estas incluyen:
 
@@ -23,4 +23,4 @@ Permite crear registros de nuevos usuarios válidos para el sistema
 Los archivos presentes constituyen *endpoints* de la API permitiendo:
 - autenticación
 - gestión de sesiones
-- Comunicación en tiemnpo real entre participantes por medio de mensajería escrita
+- Comunicación en tiempo real entre participantes por medio de mensajería escrita
