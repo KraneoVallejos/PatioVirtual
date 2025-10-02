@@ -20,12 +20,11 @@ PatioVirtual/
 │       README.md 		-> Documentación de la aplicación Android
 │
 ├───backend/			-> Servidor local en PHP (XAMPP)
-│   │   index.php
+│   │
 │   │   README.md
 │   │
 │   ├───api/			-> Endpoints de la API REST
 │   │       cargarmensajes.php
-│   │       crearUsuario.php
 │   │       guardarmensaje.php
 │   │       login.php
 │   │       logout.php
@@ -41,9 +40,11 @@ PatioVirtual/
 │       README.md
 │
 └───frontend/			-> Interfaz web del sistema
-        estilos.css
-        iniciocorrecto.php
-        README.md
+        crearUsuario.php
+        estilos.css
+        index.php
+        iniciocorrecto.php
+        README.md	
 ```
 ## Tecnologías utilizadas
 
