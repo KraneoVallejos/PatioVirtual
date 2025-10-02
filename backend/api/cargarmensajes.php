@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-require_once "conexion.php";
+require_once "../db/conexion.php";
 
 //Cabecera JSON
 header('Content-Type: application/json; charset=utf-8');

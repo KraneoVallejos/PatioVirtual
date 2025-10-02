@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-require_once "conexion.php";
+require_once "../backend/db/conexion.php";
 
 // Verificación de inicio de sesión
 if (!isset($_SESSION["usuario"])) {
@@ -101,7 +101,7 @@ $id_usuario = $_SESSION["id_usuario"];
         document.getElementById("form_nuevo_mensaje").addEventListener("submit", function(e) {
             e.preventDefault();
             const formdata = new FormData(this);
-            fetch("guardarmensaje.php", {
+            fetch("../backend/api/guardarmensaje.php", {
                     method: "POST",
                     body: formdata
                 })

@@ -9,7 +9,7 @@
 <body>
 	<h2>Bienvenido! inicia sesión</h2>
 	<div>
-		<form action="login.php" method="post">
+		<form action="../backend/api/login.php" method="post">
 			<label for="correo" >ingresa correo institucional</label><br>
 			<input type="email" id="correo" name="correo" required>
 			<br>

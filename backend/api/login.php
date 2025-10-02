@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "conexion.php";
+include "../backend/db/conexion.php";
 
 // Verificar si se ha enviado el formulario
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -28,13 +28,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION["id_usuario"] = $id_usuario;
             $_SESSION["usuario"] = $nombre;
             $_SESSION["correo"] = $correo;
-            header("Location: iniciocorrecto.php");
+            header("Location: ../../frontend/iniciocorrecto.php");
         	exit;
         } else {
-        header("Location: index.php?error=1");
+        header("Location: ../../frontend/index.php?error=1");
         }
     }else{
-        header("Location: index.php?error=1");
+        header("Location: ../../frontend/index.php?error=1");
     }
     $consulta->close();
 }

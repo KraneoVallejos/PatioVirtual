@@ -1,7 +1,7 @@
 <?php
 //generar conexión
 
-require_once "conexion.php";
+require_once "../backend/db/conexion.php";
 
 // Verificar conexión
 
