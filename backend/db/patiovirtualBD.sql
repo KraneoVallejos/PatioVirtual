@@ -28,6 +28,11 @@ CREATE TABLE `usuario` (
     PRIMARY KEY (`id_usuario`)
 );
 
+CREATE TABLE correos_autorizados (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    correo VARCHAR(255) NOT NULL UNIQUE
+);
+
 CREATE TABLE `mensajes` (
     `id_mensajes` INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
     `remitente_id` INT NOT NULL,
