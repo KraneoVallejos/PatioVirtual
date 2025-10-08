@@ -25,15 +25,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$contrasena = $conexion->real_escape_string($_POST['contrasena']);
 	echo " Datos POST recuperados!!<br>";
 
-	// consulta preparada con store_result() para verificar correo existente
+	// consulta preparada con store_result() para verificar correo autorizado
 
-	$sql = "SELECT id_usuario FROM usuario WHERE correo = ?";
+	$sql = "SELECT id FROM correos_autorizados WHERE correo = ?";
 	$stmt = $conexion->prepare($sql);
 	$stmt->bind_param("s", $correo);
 	$stmt->execute();
 	$stmt->store_result();
-	if ($stmt->num_rows > 0) {
-		echo "Este correo electrónico ya está registrado.<br>";
+	if ($stmt->num_rows == 0) {
+		echo "Correo electrónico no autorizado. Revisa el correo ingresado <br>";
 		echo "$correo";
 		echo '<form>';
 		echo '<button type="submit">Aceptar</button>';
