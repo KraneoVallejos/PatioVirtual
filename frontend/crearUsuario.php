@@ -32,21 +32,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$stmt->bind_param("s", $correo);
 	$stmt->execute();
 	$stmt->store_result();
+
 	if ($stmt->num_rows == 0) {
-		echo "Correo electrónico no autorizado. Revisa el correo ingresado <br>";
+		echo "Correo electrónico no autorizado.<br>";
+		echo '<form>';
+		echo '<button type="submit">Aceptar</button>';
+		echo '</form>';
+		$stmt->close(); 
+		exit;}
+	
+	// consulta preparada con store_result() para verificar correo existente
+
+	$sql = "SELECT id_usuario FROM usuario WHERE correo = ?";
+	$stmt = $conexion->prepare($sql);
+	$stmt->bind_param("s", $correo);
+	$stmt->execute();
+	$stmt->store_result();
+
+	if ($stmt->num_rows > 0) {
+		echo "Este correo electrónico ya está registrado.<br>";
 		echo "$correo";
 		echo '<form>';
 		echo '<button type="submit">Aceptar</button>';
 		echo '</form>';
 		$stmt->close();
 		exit;
-	} else {
-		echo "El correo electrónico es válido.<br>";
 	}
+	echo "El correo electrónico es válido.<br>";
 
 	// Hash de contraseña
 	$hashed_contrasena = password_hash($contrasena, PASSWORD_DEFAULT);
-	echo "Hash de contraseña exitoso!!!<br>".$hashed_contrasena."<br>";
 
 	// Consulta SQL preparada para crear usuario y evitar inyecciones SQL
 	$sql = "INSERT INTO usuario (nombre, apellpat, apellmat, correo, carrera, contrasena) VALUES (?, ?, ?, ?, ?, ?)";
