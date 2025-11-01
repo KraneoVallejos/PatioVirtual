@@ -13,7 +13,7 @@ if ($conexion->connect_error) {
 
 // Verificar envío de formulario
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 	// Recuperar datos del formulario y evitar inyecciones SQL con real_escape_string
 
@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		exit;
 	}
 	echo "El correo electrónico es válido.<br>";
-
+	
 	// Hash de contraseña
 	$hashed_contrasena = password_hash($contrasena, PASSWORD_DEFAULT);
 
