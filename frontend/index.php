@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
 	<meta charset=utf-8>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="estilos.css"/>
+	<link rel="stylesheet" href="estilos.css" />
 	<title>Iniciar sesión</title>
 </head>
+
 <body>
 	<h2>Bienvenido! inicia sesión</h2>
 	<div>
 		<form action="../backend/api/login.php" method="post">
-			<label for="correo" >ingresa correo institucional</label><br>
+			<label for="correo">ingresa correo institucional</label><br>
 			<input type="email" id="correo" name="correo" required>
 			<br>
 			<label for="contrasena">contraseña</label><br>
@@ -22,10 +24,11 @@
 	</div>
 
 	<div>
-	<h2>Crear nuevo usuario</h2>
-		<form action="crearUsuario.php">
-		<button type="submit">crear nuevo registro</button>
+		<h2>Crear nuevo usuario</h2>
+		<form action="crearUsuario.php" method="$_POST">
+			<button type="submit">crear nuevo registro</button>
 		</form>
-
+	</div>
 </body>
+
 </html>
