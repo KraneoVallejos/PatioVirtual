@@ -26,40 +26,40 @@ $id_usuario = $_SESSION["id_usuario"];
 
 <body>
     <div>
-    <h1>Bienvenido, <?php echo htmlspecialchars($usuario); ?>!</h1>
-    <p>Has iniciado sesión correctamente.</p>
-    
+        <h1>Bienvenido, <?php echo htmlspecialchars($usuario); ?>!</h1>
+        <p>Has iniciado sesión correctamente.</p>
+
     </div>
-     <!-- Cerrar sesión -->
+    <!-- Cerrar sesión -->
     <form action="logout.php" method="post">
         <button type="submit">Cerrar sesión</button>
     </form>
 
     <!-- Contenedor Principal -->
 
-        <h1>PATIO VIRTUAL</h1>
+    <h1>PATIO VIRTUAL</h1>
 
-        <!-- Contenedor historial de mensajes -->
-        <div id="mensajes"></div>
+    <!-- Contenedor historial de mensajes -->
+    <div id="mensajes"></div>
 
-        <!-- ventana usuario editar mensajes -->
-        <div id="mensajes_usuario">
+    <!-- ventana usuario editar mensajes -->
+    <div id="mensajes_usuario">
 
-            <form id="form_nuevo_mensaje">
-                <textarea name="mensaje" placeholder="Escribe tu mensaje..." required></textarea>
-                <button type="submit">Enviar</button>
-            </form>
-        </div>  
+        <form id="form_nuevo_mensaje">
+            <textarea name="mensaje" placeholder="Escribe tu mensaje..." required></textarea>
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
 
     <!-- función con Consulta AJAX para cargar mensajes desde el servidor-->
     <script>
         function cargarMensajes() {
 
-            fetch("cargarmensajes.php")
+            fetch("../backend/api/cargarmensajes.php")
                 .then(res => res.json())
                 .then(data => {
                     const box = document.getElementById("mensajes");
-                    if (data.success){
+                    if (data.success) {
                         let html = `<table>
             <tr>
                 <th>FECHA</th>
@@ -67,35 +67,39 @@ $id_usuario = $_SESSION["id_usuario"];
                 <th>MENSAJE</th>
                 <th>ESTADO</th>
             </tr>`;
-            data.mensajes.forEach(m => {
-                html += `
+                        data.mensajes.forEach(m => {
+                            html += `
                 <tr>
                 <td>${m.fecha}</td>
                 <td>${m.remitente}</td>
                 <td>${m.mensaje}</td>
                 <td>${m.estado}</td>
                 </tr>`;
-            });
-            html += `</table>`;
-            
-            box.innerHTML = html;
-            
-            // requestAnimationFrame ayuda a “esperar el pintado” antes de hacer el scroll.
-            // elemento.scrollTo({top: y, left: x})  método del DOM que mueve el scroll dentro de un elemento contenedor
-            
-            requestAnimationFrame(()=> {
-                box.scrollTo({ top : box.scrollHeight, behavior: "smooth"});
-            });
+                        });
+                        html += `</table>`;
 
-            
-        }else{document.getElementById("mensajes").innerHTML = `<p>Error: ${data.error}</p>`;
-            }
-        })
-        .catch(err => {
-            document.getElementById("mensajes").innerHTML = `<p>Error al cargar mensajes: ${err}</p>`;
-        });
+                        box.innerHTML = html;
+
+                        // requestAnimationFrame ayuda a “esperar el pintado” antes de hacer el scroll.
+                        // elemento.scrollTo({top: y, left: x})  método del DOM que mueve el scroll dentro de un elemento contenedor
+
+                        requestAnimationFrame(() => {
+                            box.scrollTo({
+                                top: box.scrollHeight,
+                                behavior: "smooth"
+                            });
+                        });
+
+
+                    } else {
+                        document.getElementById("mensajes").innerHTML = `<p>Error: ${data.error}</p>`;
+                    }
+                })
+                .catch(err => {
+                    document.getElementById("mensajes").innerHTML = `<p>Error al cargar mensajes: ${err}</p>`;
+                });
         }
-        
+
         //Consulta AJAX con FormData para envío de mensajes hacia el servidor
 
         document.getElementById("form_nuevo_mensaje").addEventListener("submit", function(e) {
