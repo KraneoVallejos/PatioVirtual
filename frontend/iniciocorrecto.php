@@ -1,7 +1,6 @@
 <?php
 
 session_start();
-require_once "../backend/db/conexion.php";
 
 // Verificación de inicio de sesión
 if (!isset($_SESSION["usuario"])) {
@@ -31,7 +30,7 @@ $id_usuario = $_SESSION["id_usuario"];
 
     </div>
     <!-- Cerrar sesión -->
-    <form action="logout.php" method="post">
+    <form action="../backend/api/logout.php" method="post">
         <button type="submit">Cerrar sesión</button>
     </form>
 
