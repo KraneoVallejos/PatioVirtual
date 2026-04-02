@@ -4,10 +4,10 @@ session_start();
 
 // Verificación de inicio de sesión
 if (!isset($_SESSION["usuario"])) {
-    echo "Por favor inicia sesión, serás redirigido...";
-    header("Refresh:3; url=index.php");
+    header("Location: index.php");
     exit();
 }
+
 $usuario = $_SESSION["usuario"];
 $id_usuario = $_SESSION["id_usuario"];
 ?>
