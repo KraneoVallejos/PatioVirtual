@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $consulta->fetch();
 
         //verificar hash
-        if (password_verify($contrasena, $hashed_password)) {
+        if (is_string($hashed_password) && password_verify($contrasena, $hashed_password)) {
             session_regenerate_id(true);
             $_SESSION["id_usuario"] = $id_usuario;
             $_SESSION["usuario"] = $nombre;
