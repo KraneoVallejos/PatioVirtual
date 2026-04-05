@@ -45,7 +45,7 @@ $id_usuario = $_SESSION["id_usuario"];
     <div id="mensajes_usuario">
 
         <form id="form_nuevo_mensaje">
-            <textarea name="mensaje" placeholder="Escribe tu mensaje..." required></textarea>
+            <textarea name="mensaje" placeholder="Escribe tu mensaje..." required maxlength="255"></textarea>
             <button type="submit">Enviar</button>
         </form>
     </div>
