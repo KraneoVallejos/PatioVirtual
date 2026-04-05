@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "../db/conexion.php";
+require_once "../db/conexion.php";
 
 // Verificar si se ha enviado el formulario
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
