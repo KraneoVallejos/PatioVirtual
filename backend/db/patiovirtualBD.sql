@@ -24,7 +24,7 @@ CREATE TABLE `usuario` (
         'profesor',
         'moderador'
     ) DEFAULT 'estudiante',
-    `contrasena` VARCHAR(255),
+    `contrasena` VARCHAR(255) NOT NULL,
     PRIMARY KEY (`id_usuario`)
 );
 
