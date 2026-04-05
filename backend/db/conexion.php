@@ -9,6 +9,6 @@ $conexion = new mysqli(SERVIDOR, USUARIO, PASSWORD, BD);
 
 // Verificar la conexión
 if ($conexion->connect_error) {
-    die("Error de conexión a la base de datos: " . $conexion->connect_error);
+    throw new Exception("Error de conexión a la base de datos");
 }
 $conexion->set_charset("utf8mb4"); // Se establece el tipo de codificación a UTF-8
