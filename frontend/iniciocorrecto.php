@@ -3,7 +3,7 @@
 session_start();
 
 // Verificación de inicio de sesión
-if (!isset($_SESSION["usuario"])) {
+if (!isset($_SESSION["id_usuario"])) {
     header("Location: index.php");
     exit();
 }
@@ -55,7 +55,13 @@ $id_usuario = $_SESSION["id_usuario"];
         function cargarMensajes() {
 
             fetch("../backend/api/cargarmensajes.php")
-                .then(res => res.json())
+                .then(res => {
+                    if (res.status === 401) {
+                        window.location.href = "index.php";
+                        return Promise.reject(new Error("Sesión inválida"));
+                    }
+                    return res.json()
+                })
                 .then(data => {
                     const box = document.getElementById("mensajes");
                     if (data.success) {
