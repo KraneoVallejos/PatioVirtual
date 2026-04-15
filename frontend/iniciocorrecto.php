@@ -52,57 +52,59 @@ $id_usuario = $_SESSION["id_usuario"];
 
     <!-- función con Consulta AJAX para cargar mensajes desde el servidor-->
     <script>
-        function cargarMensajes() {
+        async function cargarMensajes() {
+            try {
+                const res = await fetch("../backend/api/cargarmensajes.php");
 
-            fetch("../backend/api/cargarmensajes.php")
-                .then(res => {
-                    if (res.status === 401) {
-                        window.location.href = "index.php";
-                        return Promise.reject(new Error("Sesión inválida"));
-                    }
-                    return res.json()
-                })
-                .then(data => {
-                    const box = document.getElementById("mensajes");
-                    if (data.success) {
-                        let html = `<table>
-            <tr>
-                <th>FECHA</th>
-                <th>REMITENTE</th>
-                <th>MENSAJE</th>
-                <th>ESTADO</th>
-            </tr>`;
-                        data.mensajes.forEach(m => {
-                            html += `
-                <tr>
-                <td>${m.fecha}</td>
-                <td>${m.remitente}</td>
-                <td>${m.mensaje}</td>
-                <td>${m.estado}</td>
-                </tr>`;
-                        });
-                        html += `</table>`;
+                if (res.status === 401) {
+                    window.location.href = "index.php";
+                    return;
+                }
 
-                        box.innerHTML = html;
+                const data = await res.json();
+                const box = document.getElementById("mensajes");
+
+                if (!res.ok){
+                    box.innerHTML = `<p> Error :${data.error}</p>`;
+                    return;
+                }
+
+                if (data.success) {
+                    let html = `<table>
+                        <tr>
+                            <th>FECHA</th>
+                            <th>REMITENTE</th>
+                            <th>MENSAJE</th>
+                            <th>ESTADO</th>
+                        </tr>`;
+                    
+                    data.mensajes.forEach(m => {
+                        html += `
+                        <tr>    
+                            <td>${m.fecha}</td>
+                            <td>${m.remitente}</td>
+                            <td>${m.mensaje}</td>
+                            <td>${m.estado}</td>
+                        </tr>`;
+                    });
+                    html += `</table>`;
+                    box.innerHTML = html;
 
                         // requestAnimationFrame ayuda a “esperar el pintado” antes de hacer el scroll.
                         // elemento.scrollTo({top: y, left: x})  método del DOM que mueve el scroll dentro de un elemento contenedor
 
-                        requestAnimationFrame(() => {
-                            box.scrollTo({
-                                top: box.scrollHeight,
-                                behavior: "smooth"
-                            });
+                    requestAnimationFrame(() => {
+                        box.scrollTo({
+                            top: box.scrollHeight,
+                            behavior: "smooth"
                         });
-
-
-                    } else {
-                        document.getElementById("mensajes").innerHTML = `<p>Error: ${data.error}</p>`;
-                    }
-                })
-                .catch(err => {
-                    document.getElementById("mensajes").innerHTML = `<p>Error al cargar mensajes: ${err}</p>`;
-                });
+                    });
+                } else {
+                        box.innerHTML = `<p>Error: ${data.error}</p>`;
+                }
+            } catch(err) {
+                    document.getElementById("mensajes").innerHTML = `<p>Error al cargar mensajes: ${err.message}</p>`;
+            }
         }
 
         //Consulta AJAX con FormData para envío de mensajes hacia el servidor
