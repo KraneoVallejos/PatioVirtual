@@ -50,87 +50,99 @@ $id_usuario = $_SESSION["id_usuario"];
         </form>
     </div>
 
-    <!-- función con Consulta AJAX para cargar mensajes desde el servidor-->
-    <script>
-        async function cargarMensajes() {
-            try {
-                const res = await fetch("../backend/api/cargarmensajes.php");
+<!-- función con Consulta AJAX para cargar mensajes desde el servidor-->
+<script>
+    async function cargarMensajes() {
+        const box = document.getElementById("mensajes");
 
-                if (res.status === 401) {
-                    window.location.href = "index.php";
-                    return;
-                }
+        try {
+            const res = await fetch("../backend/api/cargarmensajes.php");
 
-                const data = await res.json();
-                const box = document.getElementById("mensajes");
-
-                if (!res.ok){
-                    box.innerHTML = `<p> Error :${data.error}</p>`;
-                    return;
-                }
-
-                if (data.success) {
-                    let html = `<table>
-                        <tr>
-                            <th>FECHA</th>
-                            <th>REMITENTE</th>
-                            <th>MENSAJE</th>
-                            <th>ESTADO</th>
-                        </tr>`;
-                    
-                    data.mensajes.forEach(m => {
-                        html += `
-                        <tr>    
-                            <td>${m.fecha}</td>
-                            <td>${m.remitente}</td>
-                            <td>${m.mensaje}</td>
-                            <td>${m.estado}</td>
-                        </tr>`;
-                    });
-                    html += `</table>`;
-                    box.innerHTML = html;
-
-                        // requestAnimationFrame ayuda a “esperar el pintado” antes de hacer el scroll.
-                        // elemento.scrollTo({top: y, left: x})  método del DOM que mueve el scroll dentro de un elemento contenedor
-
-                    requestAnimationFrame(() => {
-                        box.scrollTo({
-                            top: box.scrollHeight,
-                            behavior: "smooth"
-                        });
-                    });
-                } else {
-                        box.innerHTML = `<p>Error: ${data.error}</p>`;
-                }
-            } catch(err) {
-                    document.getElementById("mensajes").innerHTML = `<p>Error al cargar mensajes: ${err.message}</p>`;
+            if (res.status === 401) {
+                window.location.href = "index.php";
+                return;
             }
-        }
 
-        //Consulta AJAX con FormData para envío de mensajes hacia el servidor
+            const data = await res.json();
 
-        document.getElementById("form_nuevo_mensaje").addEventListener("submit", function(e) {
-            e.preventDefault();
-            const formdata = new FormData(this);
-            fetch("../backend/api/guardarmensaje.php", {
-                    method: "POST",
-                    body: formdata
-                })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.success) {
-                        this.reset();
-                        cargarMensajes();
-                    } else {
-                        alert("Error: " + data.error);
-                    }
+            if (!data.success){
+                box.innerHTML = `<p>Error: ${data.error}</p>`;
+                return;
+            }
+            
+            let html = `<table>
+                <tr>
+                    <th>FECHA</th>
+                    <th>REMITENTE</th>
+                    <th>MENSAJE</th>
+                    <th>ESTADO</th>
+                </tr>`;
+            
+            data.mensajes.forEach(m => {
+                html += `
+                <tr>    
+                    <td>${m.fecha}</td>
+                    <td>${m.remitente}</td>
+                    <td>${m.mensaje}</td>
+                    <td>${m.estado}</td>
+                </tr>`;
+            });
+            html += `</table>`;
+            box.innerHTML = html;
+
+                // requestAnimationFrame ayuda a “esperar el pintado” antes de hacer el scroll.
+                // elemento.scrollTo({top: y, left: x})  método del DOM que mueve el scroll dentro de un elemento contenedor
+
+            requestAnimationFrame(() => {
+                box.scrollTo({
+                    top: box.scrollHeight,
+                    behavior: "smooth"
                 });
-        });
+            });
+            
+        } catch(error) {
+                box.innerHTML = `<p>Error al cargar mensajes: ${error.message}</p>`;
+        }
+    }
 
-        // intervalo de Actualización de Mensajes 
-        setInterval(cargarMensajes, 5000);
-        cargarMensajes();
-    </script>
+    //Consulta AJAX con FormData para envío de mensajes hacia el servidor
+
+    async function guardarMensaje(e) {
+        e.preventDefault();
+
+        try {
+            const formulario = e.target;
+            const formdata = new FormData(formulario);
+            const res = await fetch("../backend/api/guardarmensaje.php", {
+                method: "POST",
+                body: formdata
+            });
+
+            if (res.status === 401) {
+                window.location.href = "index.php";
+                return;
+            }
+
+            const data = await res.json();
+
+            if (!data.success) {
+                alert("Error: " + data.error);
+                return;
+            }
+
+            formulario.reset();
+            cargarMensajes();
+
+        } catch (error) {
+            alert("Error al enviar mensaje: " + error.message);
+        }
+    }
+    document.getElementById("form_nuevo_mensaje").addEventListener("submit", guardarMensaje);
+    
+    // intervalo de Actualización de Mensajes 
+    setInterval(cargarMensajes, 5000);
+    cargarMensajes();
+</script>
 
 </body>
 
