@@ -57,11 +57,11 @@ try {
     ], JSON_UNESCAPED_UNICODE);
     exit();
 
-} catch (mysqli_sql_exception $e) {
+} catch (Throwable $e) {
     http_response_code(500);
     echo json_encode([
         "success" => false,
-        "error" => "error en la conexión: " 
+        "error" => "error en la conexión" 
     ], JSON_UNESCAPED_UNICODE);
     exit();
 }
