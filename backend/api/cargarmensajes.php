@@ -63,7 +63,7 @@ try {
     http_response_code(500);
     echo json_encode([
         "success" => false,
-        "error" => "error en la conexión" 
+        "error" => "error interno del servidor" 
     ], JSON_UNESCAPED_UNICODE);
     exit();
 }
