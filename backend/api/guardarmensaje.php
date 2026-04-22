@@ -13,7 +13,7 @@ try {
         echo json_encode([
             "success" => false,
             "error" => "acceso denegado"
-            ], JSON_UNESCAPED_UNICODE);
+        ], JSON_UNESCAPED_UNICODE);
         exit();
     }
 
@@ -23,7 +23,7 @@ try {
         echo json_encode([
             "success" => false,
             "error" => "método NO permitido"
-            ], JSON_UNESCAPED_UNICODE);
+        ], JSON_UNESCAPED_UNICODE);
         exit();
     }
 
@@ -36,7 +36,7 @@ try {
         echo json_encode([
             "success" => false,
             "error" => "Mensaje vacío, escribe un mensaje"
-            ], JSON_UNESCAPED_UNICODE);
+        ], JSON_UNESCAPED_UNICODE);
         exit();
     }
         
@@ -69,24 +69,27 @@ try {
         echo json_encode([
             "success" => false, 
             "error" => "error al guardar mensaje: " . $consulta->error
-            ], JSON_UNESCAPED_UNICODE);
-            $consulta->close();
-            $conexion->close();
-            exit();  
+        ], JSON_UNESCAPED_UNICODE);
+        $consulta->close();
+        $conexion->close();
+        exit();  
     }
     $consulta->close();
     $conexion->close();
 
     echo json_encode([
-            "success" => true, 
-            "mensaje" => "mensaje guardado"
-            ], JSON_UNESCAPED_UNICODE);
+        "success" => true, 
+        "mensaje" => "mensaje guardado"
+    ], JSON_UNESCAPED_UNICODE);
     exit();
+
 } catch (Throwable $e) {
+    error_log($e->__toString());
+
     http_response_code(500);
     echo json_encode([
         "success" => false,
-        "error" => "error en la conexión" 
+        "error" => "error interno del servidor" 
     ], JSON_UNESCAPED_UNICODE);
     exit();
 }
