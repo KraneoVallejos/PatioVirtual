@@ -48,12 +48,25 @@ $id_usuario = $_SESSION["id_usuario"];
             <textarea name="mensaje" placeholder="Escribe tu mensaje..." required maxlength="255"></textarea>
             <button type="submit">Enviar</button>
         </form>
+    <!--Contenedor informativo de estado de solicitudes del usuario-->
+        <div id="info_estado"></div>
     </div>
 
 <!-- función con Consulta AJAX para cargar mensajes desde el servidor-->
 <script>
+
+    const infoEstado = document.getElementById("info_estado");
+
+    function mostrarError(mensaje) {
+        infoEstado.innerHTML = `<p>Error: ${mensaje}</p>`;
+    }
+
+    function limpiarEstado() {
+        infoEstado.innerHTML = "";
+    }
+    
     async function cargarMensajes() {
-        const box = document.getElementById("mensajes");
+        const ventana_mensajes = document.getElementById("mensajes");
 
         try {
             const res = await fetch("../backend/api/cargarmensajes.php");
@@ -66,9 +79,11 @@ $id_usuario = $_SESSION["id_usuario"];
             const data = await res.json();
 
             if (!data.success){
-                box.innerHTML = `<p>Error: ${data.error}</p>`;
+                mostrarError(data.error);
                 return;
             }
+            
+            limpiarEstado();
             
             let html = `<table>
                 <tr>
@@ -88,20 +103,20 @@ $id_usuario = $_SESSION["id_usuario"];
                 </tr>`;
             });
             html += `</table>`;
-            box.innerHTML = html;
+            ventana_mensajes.innerHTML = html;
 
                 // requestAnimationFrame ayuda a “esperar el pintado” antes de hacer el scroll.
                 // elemento.scrollTo({top: y, left: x})  método del DOM que mueve el scroll dentro de un elemento contenedor
 
             requestAnimationFrame(() => {
-                box.scrollTo({
-                    top: box.scrollHeight,
+                ventana_mensajes.scrollTo({
+                    top: ventana_mensajes.scrollHeight,
                     behavior: "smooth"
                 });
             });
             
         } catch(error) {
-                box.innerHTML = `<p>Error al cargar mensajes: ${error.message}</p>`;
+                mostrarError(`al cargar mensajes: ${error.message}`);
         }
     }
 
@@ -126,15 +141,16 @@ $id_usuario = $_SESSION["id_usuario"];
             const data = await res.json();
 
             if (!data.success) {
-                alert("Error: " + data.error);
+                mostrarError(data.error);
                 return;
             }
 
             formulario.reset();
+            limpiarEstado();            
             cargarMensajes();
 
         } catch (error) {
-            alert("Error al enviar mensaje: " + error.message);
+            mostrarError(`de conexión: ${error.message}`);           
         }
     }
     document.getElementById("form_nuevo_mensaje").addEventListener("submit", guardarMensaje);
