@@ -17,7 +17,6 @@ require_once "../backend/db/conexion.php";
 	<h1>BIENVENIDO!!</h1>
 	<h2>Regístrate</h2>
 	<p> Ingresa tu nombre completo, tu correo institucional y una contraseña</p>
-	<p id="info_estado"></p>
 
 	<div>
 		
@@ -58,6 +57,7 @@ require_once "../backend/db/conexion.php";
 			<input type="password" id="contrasena" name="contrasena" autocomplete="off" required maxlength="30">
 			<br>
 			<p> Verifica tus datos y presiona confirmar</p>
+			<p id="info_estado"></p>
 			<button type="submit">confirmar</button>
 		</form>
 	</div>
