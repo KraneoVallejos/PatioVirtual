@@ -23,7 +23,7 @@
 		</form>
 	</div>
 
-	<div id="info_estado"></div>
+	<p id="info_estado"></p>
 	
 	<div>
 		<h2>Crear nuevo usuario</h2>
@@ -58,6 +58,7 @@
 
 				if (!data.success) {
 					mostrarInfo(data.error);
+					setTimeout(limpiarInfo, 3000);
 					return;
 				}
 
@@ -66,6 +67,7 @@
 			} catch (error) {
 				console.error(error);
 				mostrarInfo(`error en la conexión con el servidor : ${error.message}`);
+				setTimeout(limpiarInfo, 3000);
 			}
 		}
 		document.getElementById("formCredencial").addEventListener("submit", loginUsuario);
