@@ -18,12 +18,12 @@
 			<label for="contrasena">contraseña</label><br>
 			<input type="password" id="contrasena" name="contrasena" maxlength="30" required>
 			<br>
-			<br>
+			<p id="info_estado"></p>
 			<button type="submit">INICIO SESIÓN</button>
 		</form>
 	</div>
 
-	<p id="info_estado"></p>
+	
 	
 	<div>
 		<h2>Crear nuevo usuario</h2>
