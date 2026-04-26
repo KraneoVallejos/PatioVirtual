@@ -59,7 +59,7 @@ $id_usuario = $_SESSION["id_usuario"];
 
     const infoEstado = document.getElementById("info_estado");
 
-    function mostrarError(mensaje) {
+    function mostrarInfo(mensaje) {
         infoEstado.innerHTML = `<p>${mensaje}</p>`;
     }
 
@@ -81,7 +81,7 @@ $id_usuario = $_SESSION["id_usuario"];
             const data = await res.json();
 
             if (!data.success){
-                mostrarError(data.error);
+                mostrarInfo(data.error);
                 return;
             }
             
@@ -118,7 +118,7 @@ $id_usuario = $_SESSION["id_usuario"];
             });
             
         } catch(error) {
-                mostrarError(`Error al cargar mensajes: ${error.message}`);
+                mostrarInfo(`Error al cargar mensajes: ${error.message}`);
         }
     }
 
@@ -143,7 +143,7 @@ $id_usuario = $_SESSION["id_usuario"];
             const data = await res.json();
 
             if (!data.success) {
-                mostrarError(data.error);
+                mostrarInfo(data.error);
                 return;
             }
 
@@ -152,7 +152,7 @@ $id_usuario = $_SESSION["id_usuario"];
             cargarMensajes();
 
         } catch (error) {
-            mostrarError(`Error de conexión: ${error.message}`);           
+            mostrarInfo(`Error de conexión: ${error.message}`);           
         }
     }
     document.getElementById("form_nuevo_mensaje").addEventListener("submit", guardarMensaje);
