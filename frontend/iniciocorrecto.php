@@ -45,11 +45,13 @@ $id_usuario = $_SESSION["id_usuario"];
     <div id="mensajes_usuario">
 
         <form id="form_nuevo_mensaje">
+        
+        <!--Párrafo informativo de estado de solicitudes del usuario-->
+            <p id="info_estado"></p>
             <textarea name="mensaje" placeholder="Escribe tu mensaje..." required maxlength="255"></textarea>
             <button type="submit">Enviar</button>
         </form>
-    <!--Contenedor informativo de estado de solicitudes del usuario-->
-        <div id="info_estado"></div>
+    
     </div>
 
 <!-- función con Consulta AJAX para cargar mensajes desde el servidor-->
@@ -58,7 +60,7 @@ $id_usuario = $_SESSION["id_usuario"];
     const infoEstado = document.getElementById("info_estado");
 
     function mostrarError(mensaje) {
-        infoEstado.innerHTML = `<p>Error: ${mensaje}</p>`;
+        infoEstado.innerHTML = `<p>${mensaje}</p>`;
     }
 
     function limpiarEstado() {
@@ -116,7 +118,7 @@ $id_usuario = $_SESSION["id_usuario"];
             });
             
         } catch(error) {
-                mostrarError(`al cargar mensajes: ${error.message}`);
+                mostrarError(`Error al cargar mensajes: ${error.message}`);
         }
     }
 
@@ -150,7 +152,7 @@ $id_usuario = $_SESSION["id_usuario"];
             cargarMensajes();
 
         } catch (error) {
-            mostrarError(`de conexión: ${error.message}`);           
+            mostrarError(`Error de conexión: ${error.message}`);           
         }
     }
     document.getElementById("form_nuevo_mensaje").addEventListener("submit", guardarMensaje);
