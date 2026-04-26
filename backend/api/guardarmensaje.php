@@ -35,7 +35,7 @@ try {
         http_response_code(400);
         echo json_encode([
             "success" => false,
-            "error" => "Mensaje vacío, escribe un mensaje"
+            "error" => "mensaje vacío, escribe un mensaje"
         ], JSON_UNESCAPED_UNICODE);
         exit();
     }
