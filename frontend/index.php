@@ -5,13 +5,13 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="estilos.css" />
-	<title>Iniciar sesión</title>
+	<title>Patio Virtual</title>
 </head>
 
 <body>
 	<h2>Bienvenido! inicia sesión</h2>
 	<div>
-		<form id="formCredencial">
+		<form id="formCredencial" method ="post">
 			<label for="correo">ingresa correo institucional</label><br>
 			<input type="email" id="correo" name="correo" maxlength="50" required>
 			<br>
@@ -23,13 +23,26 @@
 		</form>
 	</div>
 
+	<div id="info_estado"></div>
+	
 	<div>
 		<h2>Crear nuevo usuario</h2>
 		<form action="crearUsuario.php" method="get">
 			<button type="submit">crear nuevo registro</button>
 		</form>
 	</div>
+
 	<script>
+		
+		const infoEstado = document.getElementById("info_estado");
+		
+		function mostrarInfo(mensaje) {
+			infoEstado.innerHTML = `<p>${mensaje}</p>`;
+		}
+		function limpiarInfo() {
+			infoEstado.innerHTML = "";
+		}
+
 		async function loginUsuario(e) {
 			e.preventDefault();
 
@@ -44,7 +57,7 @@
 				const data = await res.json();
 
 				if (!data.success) {
-					alert("error: " + data.error);
+					mostrarInfo(data.error);
 					return;
 				}
 
@@ -52,7 +65,7 @@
 
 			} catch (error) {
 				console.error(error);
-				alert("error en la conexión con el servidor");
+				mostrarInfo(`error en la conexión con el servidor : ${error.message}`);
 			}
 		}
 		document.getElementById("formCredencial").addEventListener("submit", loginUsuario);
