@@ -36,13 +36,15 @@
 		
 		const infoEstado = document.getElementById("info_estado");
 		
-		function mostrarInfo(mensaje) {
-			infoEstado.innerHTML = `<p>${mensaje}</p>`;
-		}
 		function limpiarInfo() {
 			infoEstado.innerHTML = "";
 		}
 
+		function mostrarInfo(mensaje) {
+			infoEstado.innerHTML = `<p>${mensaje}</p>`;
+			setTimeout(limpiarInfo, 3000);
+		}
+		
 		async function loginUsuario(e) {
 			e.preventDefault();
 
@@ -57,8 +59,7 @@
 				const data = await res.json();
 
 				if (!data.success) {
-					mostrarInfo(data.error);
-					setTimeout(limpiarInfo, 3000);
+					mostrarInfo(data.error);					
 					return;
 				}
 
@@ -66,8 +67,7 @@
 
 			} catch (error) {
 				console.error(error);
-				mostrarInfo(`error en la conexión con el servidor : ${error.message}`);
-				setTimeout(limpiarInfo, 3000);
+				mostrarInfo(`error en la conexión con el servidor : ${error.message}`);				
 			}
 		}
 		document.getElementById("formCredencial").addEventListener("submit", loginUsuario);
