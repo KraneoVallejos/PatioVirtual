@@ -14,9 +14,11 @@ require_once "../backend/db/conexion.php";
 
 <body>
 
-	<h1>BIENVENIDO!!</h1>
-	<h2>Regístrate</h2>
-	<p> Ingresa tu nombre completo, tu correo institucional y una contraseña</p>
+	<h1>Regístrate:</h1>
+
+	<p> Ingresa tu nombre completo, tu correo institucional y una contraseña.
+		 Si ya tienes cuenta puedes <a href="index.php">volver al inicio</a>
+	</p>
 
 	<div>
 		
@@ -62,26 +64,20 @@ require_once "../backend/db/conexion.php";
 		</form>
 	</div>
 
-		<div>
-			<form action="index.php" method="get">
-				<p>Si ya tienes cuenta puedes volver a la página de inicio</p>
-				<button type="submit">volver al inicio</button>
-			</form>
-		</div>
-
 <!-- Consulta con método AJAX para enviar y almacenar datos de nuevo usuario en BD -->
 	<script>
 
 		const infoEstado = document.getElementById("info_estado");
 
-		function mostrarInfo(mensaje) {
-			infoEstado.innerHTML = `<p>${mensaje}</p>`; 
-		}
-
 		function limpiarInfo() {
 			infoEstado.innerHTML = "";
 		}
 
+		function mostrarInfo(mensaje) {
+			infoEstado.innerHTML = `<p>${mensaje}</p>`;
+			setTimeout(limpiarInfo,3000);
+		}
+		
 		async function registrarUsuario(e) {
 			e.preventDefault();
 
@@ -96,19 +92,16 @@ require_once "../backend/db/conexion.php";
 				const data = await res.json();
 
 				if (!data.success) {
-					mostrarInfo(data.error);
-					setTimeout(limpiarInfo,3000);
+					mostrarInfo(data.error);					
 					return;
 				}
 
 				mostrarInfo(data.mensaje);
-				setTimeout(limpiarInfo,5000);
 				formRegistro.reset();
 				window.location.href=("index.php")
 								
 			} catch (error) {
-				mostrarInfo(`Error en el envío de datos: ${error.message}`);
-				setTimeout(limpiarInfo,3000);
+				mostrarInfo(`Error en el envío de datos: ${error.message}`);				
 			}
 		}
 		document.getElementById("formRegistro").addEventListener("submit", registrarUsuario);
