@@ -78,8 +78,7 @@ try {
     $conexion->close();
 
     echo json_encode([
-        "success" => true, 
-        "mensaje" => "mensaje guardado"
+        "success" => true
     ], JSON_UNESCAPED_UNICODE);
     exit();
 
