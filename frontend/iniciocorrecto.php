@@ -59,14 +59,15 @@ $id_usuario = $_SESSION["id_usuario"];
 
     const infoEstado = document.getElementById("info_estado");
 
-    function mostrarInfo(mensaje) {
-        infoEstado.innerHTML = `<p>${mensaje}</p>`;
-    }
-
     function limpiarEstado() {
         infoEstado.innerHTML = "";
     }
-    
+
+    function mostrarInfo(mensaje) {
+        infoEstado.innerHTML = `<p>${mensaje}</p>`;
+        setTimeout(limpiarEstado,3000);
+    }
+        
     async function cargarMensajes() {
         const ventana_mensajes = document.getElementById("mensajes");
 
@@ -84,9 +85,7 @@ $id_usuario = $_SESSION["id_usuario"];
                 mostrarInfo(data.error);
                 return;
             }
-            
-            limpiarEstado();
-            
+                       
             let html = `<table>
                 <tr>
                     <th>FECHA</th>
@@ -148,11 +147,10 @@ $id_usuario = $_SESSION["id_usuario"];
             }
 
             formulario.reset();
-            limpiarEstado();            
             cargarMensajes();
 
         } catch (error) {
-            mostrarInfo(`Error de conexión: ${error.message}`);           
+            mostrarInfo(`Error de conexión: ${error.message}`);
         }
     }
     document.getElementById("form_nuevo_mensaje").addEventListener("submit", guardarMensaje);
