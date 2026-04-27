@@ -28,7 +28,7 @@
 	<div>
 		<h2>Crear nuevo usuario</h2>
 		<form action="crearUsuario.php" method="get">
-			<button type="submit">crear nuevo registro</button>
+			<button type="submit">registrarse</button>
 		</form>
 	</div>
 
