@@ -9,7 +9,8 @@
 </head>
 
 <body>
-	<h2>Bienvenido! inicia sesión</h2>
+	<h1>Bienvenido!</h1>
+	<h2>Inicia sesión</h2>
 	<div>
 		<form id="formCredencial" method ="post">
 			<label for="correo">ingresa correo institucional</label><br>
@@ -26,7 +27,7 @@
 	
 	
 	<div>
-		<h2>Crear nuevo usuario</h2>
+		<h3>Crear nuevo usuario</h3>
 		<form action="crearUsuario.php" method="get">
 			<button type="submit">registrarse</button>
 		</form>
