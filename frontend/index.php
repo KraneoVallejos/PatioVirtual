@@ -11,23 +11,24 @@
 <body>
 	<h1>Bienvenido!</h1>
 	
-	<div class="contenedor">
+	<div class="contenedor centrado">
 		<h2>Inicia sesión</h2>
-		<form class="formulario" id="formCredencial" method ="post">
-			<label for="correo">Ingrese correo institucional</label>
+		<form class="formulario centrado" id="formCredencial" method ="post">
+			<label for="correo">Ingresa tu correo institucional</label>
 			<input type="email" id="correo" name="correo" maxlength="50" required>
 			
-			<label for="contrasena">Ingrese contraseña</label>
+			<label for="contrasena">Ingresa tu contraseña</label>
 			<input type="password" id="contrasena" name="contrasena" maxlength="30" required>
 			
-			<p id="info_estado"></p>
 			<button type="submit">INICIAR SESIÓN</button>
 		</form>
+		<div class="informacion" id="info_estado"></div>
+
 	</div>
 	
-	<div class="contenedor">
+	<div class="contenedor centrado">
 		<h2>Crear nuevo usuario</h2>
-		<form class="formulario" action="crearUsuario.php" method="get">
+		<form class="formulario centrado" action="crearUsuario.php" method="get">
 			<button type="submit">REGISTRARSE</button>
 		</form>
 	</div>
@@ -38,10 +39,12 @@
 		
 		function limpiarInfo() {
 			infoEstado.innerHTML = "";
+			infoEstado.style.display = "none";
 		}
 
 		function mostrarInfo(mensaje) {
-			infoEstado.innerHTML = `<p>${mensaje}</p>`;
+			infoEstado.style.display = "block";
+			infoEstado.innerHTML = `<p>⚠️ ${mensaje}</p>`;
 			setTimeout(limpiarInfo, 3000);
 		}
 		

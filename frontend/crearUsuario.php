@@ -20,29 +20,29 @@ require_once "../backend/db/conexion.php";
 		 Si ya tienes cuenta puedes <a href="index.php">volver al inicio</a>
 	</p>
 
-	<div>
+	<div class="contenedor">
 		
-		<form id="formRegistro" method="post">
+		<form class="formulario izquierda" id="formRegistro" method="post">
 
-			<label for="nombre">nombre</label><br>
+			<label for="nombre">nombre</label>
 			<input type="text" id="nombre" name="nombre" placeholder = "nombre... " required maxlength="30">
-			<br>
-			<br>
-			<label for="apellpat">primer apellido</label><br>
+			
+			
+			<label for="apellpat">primer apellido</label>
 			<input type="text" id="apellpat" name="apellpat" placeholder = "primer apellido... " required maxlength="30">
-			<br>
-			<br>
-			<label for="apellmat">segundo apellido</label><br>
+			
+			
+			<label for="apellmat">segundo apellido</label>
 			<input type="text" id="apellmat" name="apellmat" placeholder = "segundo apellido... " required maxlength="30">
-			<br>
-			<br>
-			<label for="correo">correo electrónico</label><br>
+			
+			
+			<label for="correo">correo electrónico</label>
 			<input type="email" id="correo" name="correo"  placeholder = "nombre@email.com..." required maxlength="50">
-			<br>
-			<br>
-			<label for="carrera">Selecciona carrera</label><br>
+			
+			
+			<label for="carrera">selecciona tu carrera</label>
 			<select id="carrera" name="carrera" required>
-				<option value="">--Seleccione--</option>
+				<option value=""> - - Carreras - - </option>
 				<?php
 				$res = $conexion->query("SELECT nombre_carrera FROM carreras");
 				while ($fila = $res->fetch_assoc()) {
@@ -53,15 +53,15 @@ require_once "../backend/db/conexion.php";
 				$res->free();
 				$conexion->close();
 				?>
-			</select><br><br>
+			</select>
 
-			<label for="contrasena">crea una contraseña</label><br>
-			<input type="password" id="contrasena" name="contrasena" autocomplete="off" required maxlength="30">
-			<br>
+			<label for="contrasena">crea una contraseña</label>
+			<input type="password" id="contrasena" name="contrasena" autocomplete="off" placeholder="contraseña" maxlength="30" required>
+			
 			<p> Verifica tus datos y presiona confirmar</p>
-			<p id="info_estado"></p>
-			<button type="submit">confirmar</button>
+			<button type="submit">CONFIRMAR</button>
 		</form>
+		<div class="informacion"  id="info_estado"></div>
 	</div>
 
 <!-- Consulta con método AJAX para enviar y almacenar datos de nuevo usuario en BD -->
@@ -71,10 +71,12 @@ require_once "../backend/db/conexion.php";
 
 		function limpiarInfo() {
 			infoEstado.innerHTML = "";
+			infoEstado.style.display = "none";
 		}
 
 		function mostrarInfo(mensaje) {
-			infoEstado.innerHTML = `<p>${mensaje}</p>`;
+			infoEstado.style.display = "block";
+			infoEstado.innerHTML = `<p>⚠️ ${mensaje}</p>`;
 			setTimeout(limpiarInfo,3000);
 		}
 		

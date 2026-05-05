@@ -82,7 +82,7 @@ div {
 		color: black;
 	}
 
-	div { 
+	div {
 		width: max-content;
 		margin: 20px auto; 
 		background-color: #2a84f9; 
@@ -104,10 +104,21 @@ div {
 	.formulario {
 		display: flex;
 		flex-direction: column;
-		
+	}
+
+	.centrado {
+		align-items: center;
+		text-align: center;
 	}
 	
+	.izquierda {
+		align-items: flex-start;
+		text-align: left;
+		padding-right: 10px;
+	}
+
 	input {
+		width: 100%;
 		border-radius: 10px;
 		border-style: solid;
 		border-width: 1.5px;
@@ -116,7 +127,33 @@ div {
 		margin: 0.3rem 0rem 0.5rem 0rem;
 		font-size: medium;
 	}
+
+	button {
+		border-radius: 10px;
+		max-width: max-content;
+		padding: 0.3rem;
+	}
 	
+	select {
+		align-items: flex-start;
+		margin: 0.5rem;
+		font-size: medium;
+		width: 100%;
+	}
+
+	.informacion {
+		display: none;
+		background-color: aqua;
+		position: fixed;
+		border: solid 1.5px black;
+		border-radius: 5px;
+		width: 100%;
+		left: 0%;
+		top: 35%;
+		font-size: large;
+		text-align: center
+	}
+
 	#mensajes {
 		width: 80%; 
 		max-height: 30vh;
@@ -128,8 +165,12 @@ div {
 	}
 
 	a {
+		background-color: coral;
 		color: #f2ff00;
-		text-decoration: underline;
+		border: solid 1.5px black;
+		border-radius: 5px;
+		text-decoration: none;
+		padding: 1px;
 	}
 	
 }
