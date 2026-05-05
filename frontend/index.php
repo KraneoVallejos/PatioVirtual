@@ -10,26 +10,25 @@
 
 <body>
 	<h1>Bienvenido!</h1>
-	<h2>Inicia sesión</h2>
-	<div>
-		<form id="formCredencial" method ="post">
-			<label for="correo">ingresa correo institucional</label><br>
+	
+	<div class="contenedor">
+		<h2>Inicia sesión</h2>
+		<form class="formulario" id="formCredencial" method ="post">
+			<label for="correo">Ingrese correo institucional</label>
 			<input type="email" id="correo" name="correo" maxlength="50" required>
-			<br>
-			<label for="contrasena">contraseña</label><br>
+			
+			<label for="contrasena">Ingrese contraseña</label>
 			<input type="password" id="contrasena" name="contrasena" maxlength="30" required>
-			<br>
+			
 			<p id="info_estado"></p>
-			<button type="submit">INICIO SESIÓN</button>
+			<button type="submit">INICIAR SESIÓN</button>
 		</form>
 	</div>
-
 	
-	
-	<div>
-		<h3>Crear nuevo usuario</h3>
-		<form action="crearUsuario.php" method="get">
-			<button type="submit">registrarse</button>
+	<div class="contenedor">
+		<h2>Crear nuevo usuario</h2>
+		<form class="formulario" action="crearUsuario.php" method="get">
+			<button type="submit">REGISTRARSE</button>
 		</form>
 	</div>
 

@@ -1,10 +1,13 @@
 /* Estilo para dispositivos pequeños */
 
 @media (max-width: 500px) {
-  body {font-size: 20px;
-        font-family: Arial, sans-serif;
-        background-color: orange;
-       }
+
+	body {
+	font-size: 20px;
+	font-family: Arial, sans-serif;
+	background-color: orange;
+	border-radius: 5px;
+	}
 	
 a {color: #f2ff00; text-decoration: underline;}
  
@@ -17,7 +20,8 @@ div {
 	margin: 5px auto; 
 	background-color: #f9d62a; 
 	overflow: hidden;
-	padding: 5px; 
+	padding: 5px;
+	border-radius: 5px;
 } 
  
 #mensajes {
@@ -68,37 +72,64 @@ div {
 /* Estilo para dispositivos grandes (laptops, Pantallas PC) */
 
 @media (min-width: 801px) {
-body { 
-	background-color: #b4c9fc;
-	font-family: Verdana; 
-	font-size: 16px; 
-	color: #444; 
-} 
+	
+	body {
+		display: flex;
+		flex-direction: column;
+		background-color: #b4c9fc;
+		font-family: Verdana, sans-serif; 
+		font-size: 16px; 
+		color: black;
+	}
 
-a {color: #f2ff00; text-decoration: underline;} 
- 
-a:hover {text-decoration: underline;} 
- 
-h1, h2 {margin-bottom: 15px} 
- 
-h1 {font-size: 20px;} 
-h2 {font-size: 18px} 
- 
-div { 
-	width: max-content	; 
-	margin: 20px auto; 
-	background-color: #2a84f9; 
-	overflow: hidden;
-	padding: 15px; 
-} 
- 
-#mensajes {
-	width: 80%; 
-	max-height: 30vh;
-	margin: 20px auto; 
-	background-color: #34f92a; 
-	overflow-y: auto;
-	overflow-x: hidden;
-	padding: 15px; 
-}
+	div { 
+		width: max-content;
+		margin: 20px auto; 
+		background-color: #2a84f9; 
+		overflow: hidden;
+		padding: 15px;
+	}
+
+	.contenedor {
+		border-radius: 10px;
+		border-style: solid;
+		border-color: rgb(7, 7, 122);
+	}
+
+	h1, h2 {
+		margin-top: 0rem;
+		margin-bottom: 1rem;
+	}
+
+	.formulario {
+		display: flex;
+		flex-direction: column;
+		
+	}
+	
+	input {
+		border-radius: 10px;
+		border-style: solid;
+		border-width: 1.5px;
+		border-color: black;
+		padding: 0.3rem;
+		margin: 0.3rem 0rem 0.5rem 0rem;
+		font-size: medium;
+	}
+	
+	#mensajes {
+		width: 80%; 
+		max-height: 30vh;
+		margin: 20px auto; 
+		background-color: #34f92a; 
+		overflow-y: auto;
+		overflow-x: hidden;
+		padding: 15px; 
+	}
+
+	a {
+		color: #f2ff00;
+		text-decoration: underline;
+	}
+	
 }
