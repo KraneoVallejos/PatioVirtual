@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="estilos.css" />
-	<title>Patio Virtual</title>
+	<title>PATIO VIRTUAL - LOGIN</title>
 </head>
 
 <body>
@@ -15,10 +15,10 @@
 		<h2>Inicia sesión</h2>
 		<form class="formulario centrado" id="formCredencial" method ="post">
 			<label for="correo">Ingresa tu correo institucional</label>
-			<input type="email" id="correo" name="correo" maxlength="50" required>
+			<input type="email" id="correo" name="correo" maxlength="50" placeholder="ejemplo@institucion.cl..." required>
 			
 			<label for="contrasena">Ingresa tu contraseña</label>
-			<input type="password" id="contrasena" name="contrasena" maxlength="30" required>
+			<input type="password" id="contrasena" name="contrasena" maxlength="30" placeholder="contraseña..." required>
 			
 			<button type="submit">INICIAR SESIÓN</button>
 		</form>

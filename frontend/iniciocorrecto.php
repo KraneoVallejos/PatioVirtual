@@ -16,43 +16,45 @@ $id_usuario = $_SESSION["id_usuario"];
 <html lang="es">
 
 <head>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link rel="stylesheet" href="estilos.css" />
-    <title>PATIO VIRTUAL</title>
+    <title>PATIO VIRTUAL - CHAT</title>
+
 </head>
 
 <body>
-    <div>
-        <h1>Bienvenido, <?php echo htmlspecialchars($usuario); ?>!</h1>
-        <p>Has iniciado sesión correctamente.</p>
-
-    </div>
-    <!-- Cerrar sesión -->
-    <form action="../backend/api/logout.php" method="post">
-        <button type="submit">Cerrar sesión</button>
-    </form>
-
-    <!-- Contenedor Principal -->
 
     <h1>PATIO VIRTUAL</h1>
 
+    <div class="contenedor centrado">
+        <h1>Bienvenido, <?php echo htmlspecialchars($usuario); ?>!</h1>
+        <p>Has iniciado sesión correctamente.</p>
+    
+        <!-- Cerrar sesión -->
+        <form action="../backend/api/logout.php" method="post">
+            <button type="submit">CERRAR SESIÓN</button>
+        </form>
+    </div>
+
     <!-- Contenedor historial de mensajes -->
-    <div id="mensajes"></div>
+    <div class="contenedor mensajes" id="mensajes"></div>
 
     <!-- ventana usuario editar mensajes -->
-    <div id="mensajes_usuario">
+    <div class="contenedor nuevo_mensaje" id="mensajes_usuario">
 
         <form id="form_nuevo_mensaje">
-        
-        <!--Párrafo informativo de estado de solicitudes del usuario-->
-            <p id="info_estado"></p>
             <textarea name="mensaje" placeholder="Escribe tu mensaje..." required maxlength="255"></textarea>
-            <button type="submit">Enviar</button>
+            <button type="submit">ENVIAR</button>
         </form>
-    
+
     </div>
+
+    <!--Contenedor informativo de estado de solicitudes del usuario-->
+    <div class="informacion" id="info_estado"></div>
+    
+
 
 <!-- función con Consulta AJAX para cargar mensajes desde el servidor-->
 <script>
@@ -61,9 +63,11 @@ $id_usuario = $_SESSION["id_usuario"];
 
     function limpiarEstado() {
         infoEstado.innerHTML = "";
+        infoEstado.style.display ="none";
     }
 
     function mostrarInfo(mensaje) {
+        infoEstado.style.display ="block";
         infoEstado.innerHTML = `<p>${mensaje}</p>`;
         setTimeout(limpiarEstado,3000);
     }

@@ -37,7 +37,7 @@ require_once "../backend/db/conexion.php";
 			
 			
 			<label for="correo">correo electrónico</label>
-			<input type="email" id="correo" name="correo"  placeholder = "nombre@email.com..." required maxlength="50">
+			<input type="email" id="correo" name="correo"  placeholder = "ejemplo@institución.cl..." required maxlength="50">
 			
 			
 			<label for="carrera">selecciona tu carrera</label>
@@ -56,7 +56,7 @@ require_once "../backend/db/conexion.php";
 			</select>
 
 			<label for="contrasena">crea una contraseña</label>
-			<input type="password" id="contrasena" name="contrasena" autocomplete="off" placeholder="contraseña" maxlength="30" required>
+			<input type="password" id="contrasena" name="contrasena" autocomplete="off" placeholder="contraseña..." maxlength="30" required>
 			
 			<p> Verifica tus datos y presiona confirmar</p>
 			<button type="submit">CONFIRMAR</button>
