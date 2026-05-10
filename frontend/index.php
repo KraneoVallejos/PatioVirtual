@@ -43,7 +43,7 @@
 		}
 
 		function mostrarInfo(mensaje) {
-			infoEstado.style.display = "block";
+			infoEstado.style.display = "flex";
 			infoEstado.innerHTML = `<p>⚠️ ${mensaje}</p>`;
 			setTimeout(limpiarInfo, 3000);
 		}

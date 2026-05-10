@@ -29,8 +29,7 @@ $id_usuario = $_SESSION["id_usuario"];
     <h1>PATIO VIRTUAL</h1>
 
     <div class="contenedor centrado">
-        <h1>Bienvenido, <?php echo htmlspecialchars($usuario); ?>!</h1>
-        <p>Has iniciado sesión correctamente.</p>
+        <h2>Bienvenido, <?php echo htmlspecialchars($usuario); ?>!</h2>
     
         <!-- Cerrar sesión -->
         <form action="../backend/api/logout.php" method="post">
@@ -39,16 +38,27 @@ $id_usuario = $_SESSION["id_usuario"];
     </div>
 
     <!-- Contenedor historial de mensajes -->
-    <div class="contenedor mensajes" id="mensajes"></div>
+    <div id="mensajes" class="contenedor mensajes">
+        <table>
+            <thead>
+                <tr>
+                    <th>FECHA</th>
+                    <th>REMITENTE</th>
+                    <th>MENSAJE</th>
+                    <th>ESTADO</th>
+                </tr>
+            </thead>
+            <tbody id="tbody_mensajes"></tbody>
+        </table>
+    </div>
 
     <!-- ventana usuario editar mensajes -->
-    <div class="contenedor nuevo_mensaje" id="mensajes_usuario">
+    <div id="mensajes_usuario" class="contenedor nuevo_mensaje">
 
         <form id="form_nuevo_mensaje">
-            <textarea name="mensaje" placeholder="Escribe tu mensaje..." required maxlength="255"></textarea>
+            <textarea rows="1" name="mensaje" placeholder="Escribe tu mensaje..." required maxlength="255"></textarea>
             <button type="submit">ENVIAR</button>
         </form>
-
     </div>
 
     <!--Contenedor informativo de estado de solicitudes del usuario-->
@@ -67,13 +77,15 @@ $id_usuario = $_SESSION["id_usuario"];
     }
 
     function mostrarInfo(mensaje) {
-        infoEstado.style.display ="block";
+        infoEstado.style.display ="flex";
         infoEstado.innerHTML = `<p>${mensaje}</p>`;
         setTimeout(limpiarEstado,3000);
     }
         
     async function cargarMensajes() {
-        const ventana_mensajes = document.getElementById("mensajes");
+        const cuerpo_mensaje = document.getElementById("tbody_mensajes");
+        const contenedor_tabla_mensajes = document.getElementById("mensajes");
+
 
         try {
             const res = await fetch("../backend/api/cargarmensajes.php");
@@ -90,32 +102,27 @@ $id_usuario = $_SESSION["id_usuario"];
                 return;
             }
                        
-            let html = `<table>
-                <tr>
-                    <th>FECHA</th>
-                    <th>REMITENTE</th>
-                    <th>MENSAJE</th>
-                    <th>ESTADO</th>
-                </tr>`;
+            let contenido = "";
             
             data.mensajes.forEach(m => {
-                html += `
+                contenido += `
                 <tr>    
                     <td>${m.fecha}</td>
                     <td>${m.remitente}</td>
-                    <td>${m.mensaje}</td>
+                    <td>
+                        <div class="burbuja">${m.mensaje}</div>
+                    </td>
                     <td>${m.estado}</td>
                 </tr>`;
             });
-            html += `</table>`;
-            ventana_mensajes.innerHTML = html;
+            cuerpo_mensaje.innerHTML = contenido;
 
                 // requestAnimationFrame ayuda a “esperar el pintado” antes de hacer el scroll.
                 // elemento.scrollTo({top: y, left: x})  método del DOM que mueve el scroll dentro de un elemento contenedor
 
             requestAnimationFrame(() => {
-                ventana_mensajes.scrollTo({
-                    top: ventana_mensajes.scrollHeight,
+                contenedor_tabla_mensajes.scrollTo({
+                    top: contenedor_tabla_mensajes.scrollHeight,
                     behavior: "smooth"
                 });
             });
@@ -160,7 +167,7 @@ $id_usuario = $_SESSION["id_usuario"];
     document.getElementById("form_nuevo_mensaje").addEventListener("submit", guardarMensaje);
     
     // intervalo de Actualización de Mensajes 
-    setInterval(cargarMensajes, 5000);
+    // setInterval(cargarMensajes, 5000);
     cargarMensajes();
 </script>
 

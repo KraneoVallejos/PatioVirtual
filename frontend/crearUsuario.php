@@ -16,9 +16,7 @@ require_once "../backend/db/conexion.php";
 
 	<h1>Regístrate:</h1>
 
-	<p> Ingresa tu nombre completo, tu correo institucional y una contraseña.
-		 Si ya tienes cuenta puedes <a href="index.php">volver al inicio</a>
-	</p>
+	<p> Ingresa tu nombre completo, tu correo institucional y una contraseña. Si ya tienes cuenta puedes <a href="index.php">volver al inicio</a></p>
 
 	<div class="contenedor">
 		
@@ -75,7 +73,7 @@ require_once "../backend/db/conexion.php";
 		}
 
 		function mostrarInfo(mensaje) {
-			infoEstado.style.display = "block";
+			infoEstado.style.display = "flex";
 			infoEstado.innerHTML = `<p>⚠️ ${mensaje}</p>`;
 			setTimeout(limpiarInfo,3000);
 		}
