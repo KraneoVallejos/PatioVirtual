@@ -86,14 +86,10 @@ div {
 		
 	}
 
-	div {
+	.contenedor {
 		margin: auto; 
 		background-color: #2a84f9; 
-		overflow: hidden;
 		padding: 0.5em;
-	}
-
-	.contenedor {
 		border-radius: 10px;
 		border-style: solid;
 		border-color: rgb(7, 7, 122);
@@ -153,6 +149,7 @@ div {
 		font-size: clamp( 12px, 1.3em, 16px);
 		box-sizing: border-box;
 		margin: 0.2em 0em 0.4em 0em;
+		cursor: pointer;
 	}
 
 	button {
@@ -166,6 +163,7 @@ div {
 
 	button:hover {
 		background-color: #b4c9fc;
+		transform: scale(1.05);
 	}
 
 	.informacion {
@@ -188,7 +186,7 @@ div {
 	.mensajes {
 		width: 95%; 
 		max-height: 50vh;
-		background-color: #34f92a; 
+		background-color: #2af95a; 
 		overflow-y: auto;
 		overflow-x: hidden;
 		padding: 0;
@@ -196,8 +194,8 @@ div {
 	}
 
 	.mensajes table {
-		margin: 15px;
 		border-collapse: collapse;
+		width: 100%;
 	}
 
 	.mensajes th {
@@ -205,10 +203,11 @@ div {
 		top: 0;
 		background-color: darkorange;
 		z-index: 2;
+		padding: 2px 8px;
 	}
 
 	.mensajes td {
-		padding: 0px 3px 0px 3px;
+		padding: 1px 8px;
 	}
 
 	.burbuja {
@@ -218,6 +217,8 @@ div {
 		border-radius: 10px;
 		text-align: left;
 		word-wrap: break-word;
+		white-space: pre-wrap;
+		padding: 3px 8px;
 	}
 
 	.nuevo_mensaje {
@@ -241,12 +242,17 @@ div {
 	}
 
 	a {
-		background-color: coral;
+		background-color: #ff7f50;
 		color: #f2ff00;
 		border: solid 1.5px black;
 		border-radius: 5px;
 		text-decoration: none;
-		padding: 1px;
+		padding: 0px 2px;
+	}
+
+	a:hover {
+		background-color:#f2ff00;
+		color: #ff7f50;
 	}
 	
 }
