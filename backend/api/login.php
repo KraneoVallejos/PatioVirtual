@@ -83,7 +83,7 @@ try {
 
         echo json_encode ([
             "success" => true,
-            "mensaje" => "has iniciado sesión correctamente"
+            "mensaje" => $nombre.", has iniciado sesión correctamente!😎"
         ], JSON_UNESCAPED_UNICODE);
         $consulta->close();
         $conexion->close();
