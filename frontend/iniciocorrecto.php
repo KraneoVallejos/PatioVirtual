@@ -61,7 +61,7 @@ $id_usuario = $_SESSION["id_usuario"];
     <div id="mensajes_usuario" class="contenedor nuevo_mensaje">
 
         <form id="form_nuevo_mensaje">
-            <textarea rows="1" name="mensaje" placeholder="Escribe tu mensaje..." required maxlength="255"></textarea>
+            <textarea rows="1" name="mensaje" placeholder="Escribe tu mensaje..." autofocus required maxlength="255"></textarea>
             <button type="submit">ENVIAR</button>
         </form>
     </div>
