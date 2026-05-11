@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+header("Expires: 0");
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -18,7 +27,7 @@
 			<input type="email" id="correo" name="correo" maxlength="50" placeholder="ejemplo@institucion.cl..." required>
 			
 			<label for="contrasena">Ingresa tu contraseña</label>
-			<input type="password" id="contrasena" name="contrasena" maxlength="30" placeholder="contraseña..." required>
+			<input type="password" id="contrasena" name="contrasena" maxlength="30" placeholder="contraseña..." autocomplete="off" required>
 			
 			<button type="submit">INICIAR SESIÓN</button>
 		</form>
@@ -65,7 +74,8 @@
 					mostrarInfo(data.error);					
 					return;
 				}
-
+				
+				sessionStorage.setItem("login_correcto", data.mensaje);
 				window.location.href= "iniciocorrecto.php";
 
 			} catch (error) {
