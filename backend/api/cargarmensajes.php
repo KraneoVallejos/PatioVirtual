@@ -19,7 +19,11 @@ try {
     require_once "../db/conexion.php";
 
     // consulta SQL con JOIN 
-    $sql2 = "SELECT m.fecha, u1.nombre AS remitente, m.mensaje, m.estado
+    $sql2 = "SELECT
+        DATE_FORMAT(m.fecha, '%H:%i') AS fecha,
+        u1.nombre AS remitente,
+        m.mensaje,
+        m.estado
     FROM mensajes m
     JOIN usuario u1 ON m.remitente_id = u1.id_usuario
     ORDER BY m.id_mensajes ASC";
