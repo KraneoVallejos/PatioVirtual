@@ -2,6 +2,11 @@
 
 session_start();
 
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+header("Expires: 0");
+
 // Verificación de inicio de sesión
 if (!isset($_SESSION["id_usuario"])) {
     header("Location: index.php");
@@ -42,7 +47,7 @@ $id_usuario = $_SESSION["id_usuario"];
         <table>
             <thead>
                 <tr>
-                    <th>FECHA</th>
+                    <th>HORA</th>
                     <th>REMITENTE</th>
                     <th>MENSAJE</th>
                     <th>ESTADO</th>
@@ -70,6 +75,7 @@ $id_usuario = $_SESSION["id_usuario"];
 <script>
 
     const infoEstado = document.getElementById("info_estado");
+    const mensajeLogin = sessionStorage.getItem("login_correcto")
 
     function limpiarEstado() {
         infoEstado.innerHTML = "";
@@ -80,6 +86,12 @@ $id_usuario = $_SESSION["id_usuario"];
         infoEstado.style.display ="flex";
         infoEstado.innerHTML = `<p>${mensaje}</p>`;
         setTimeout(limpiarEstado,3000);
+    }
+
+    
+    if(mensajeLogin){
+        mostrarInfo(mensajeLogin);
+        sessionStorage.removeItem("login_correcto");
     }
         
     async function cargarMensajes() {
@@ -119,7 +131,7 @@ $id_usuario = $_SESSION["id_usuario"];
 
                 // requestAnimationFrame ayuda a “esperar el pintado” antes de hacer el scroll.
                 // elemento.scrollTo({top: y, left: x})  método del DOM que mueve el scroll dentro de un elemento contenedor
-
+            
             requestAnimationFrame(() => {
                 contenedor_tabla_mensajes.scrollTo({
                     top: contenedor_tabla_mensajes.scrollHeight,
@@ -167,7 +179,7 @@ $id_usuario = $_SESSION["id_usuario"];
     document.getElementById("form_nuevo_mensaje").addEventListener("submit", guardarMensaje);
     
     // intervalo de Actualización de Mensajes 
-    // setInterval(cargarMensajes, 5000);
+    setInterval(cargarMensajes, 2000);
     cargarMensajes();
 </script>
 
