@@ -1,18 +1,25 @@
-/* Estilo para dispositivos pequeños */
+/**************************************************
+Estilo para dispositivos pequeños tablets, móviles
+***************************************************/
 
-@media (max-width: 325px) {
+@media (max-width: 768px) {
 
 	body {
-	font-size: 20px;
-	font-family: Arial, sans-serif;
-	background-color: orange;
-	border-radius: 5px;
+		display: flex;
+		flex-direction: column;
+		gap: 2vw;
+		padding: 2vw;
+		margin: 0;
+		background-color: #b4fcdf;
+		font-family: Verdana, sans-serif; 
+		font-size: 3vw;
+		color: black;
 	}
 	
 a {color: #f2ff00; text-decoration: underline;}
- 
+
 a:hover {text-decoration: underline;} 
- 
+
 h1, h2 {margin: 10px} 
 
 div { 
@@ -23,7 +30,7 @@ div {
 	padding: 5px;
 	border-radius: 5px;
 } 
- 
+
 #mensajes {
 	width: 95%;
 	font-size: 15px;
@@ -36,42 +43,11 @@ div {
 }
 }
 
-/* Estilo para dispositivos medianos (tablets) */
+/**********************************************************
+ Estilo para dispositivos grandes (laptops, Pantallas PC) 
+***********************************************************/
 
-@media (min-width: 326px) and (max-width: 600px){
-  body {font-size: 30px;
-        font-family: Arial, sans-serif;
-        background-color: rgb(117, 251, 21);
-       }
-	
-a {color: #f2ff00; text-decoration: underline;}
- 
-a:hover {text-decoration: underline;} 
- 
-h1, h2 {margin: 10px} 
-
-div { 
-	width: max-content	; 
-	margin: 20px auto; 
-	background-color: #f9d62a; 
-	overflow: hidden;
-	padding: 5px; 
-} 
- 
-#mensajes {
-	width: 80%; 
-	max-height: 30vh;
-	margin: 20px auto; 
-	background-color: #34f92a; 
-	overflow-y: auto;
-	overflow-x: hidden;
-	padding: 15px; 
-}
-}
-
-/* Estilo para dispositivos grandes (laptops, Pantallas PC) */
-
-@media (min-width: 650px) {
+@media (min-width: 769px) {
 	
 	body {
 		display: flex;
@@ -194,8 +170,9 @@ div {
 	}
 
 	.mensajes table {
-		border-collapse: collapse;
 		width: 100%;
+		border-collapse: collapse;
+		background-color: #00ffbf;
 	}
 
 	.mensajes th {
@@ -219,6 +196,7 @@ div {
 		word-wrap: break-word;
 		white-space: pre-wrap;
 		padding: 3px 8px;
+		max-width: 68vw;
 	}
 
 	.nuevo_mensaje {
