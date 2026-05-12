@@ -33,7 +33,7 @@ $id_usuario = $_SESSION["id_usuario"];
 
     <h1>PATIO VIRTUAL</h1>
 
-    <div class="contenedor centrado">
+    <div id="bienvenida" class="contenedor centrado">
         <h2>Bienvenido, <?php echo htmlspecialchars($usuario); ?>!</h2>
     
         <!-- Cerrar sesión -->
@@ -48,7 +48,7 @@ $id_usuario = $_SESSION["id_usuario"];
             <thead>
                 <tr>
                     <th>HORA</th>
-                    <th>REMITENTE</th>
+                    <th>REMITE</th>
                     <th>MENSAJE</th>
                     <th>ESTADO</th>
                 </tr>
@@ -61,7 +61,7 @@ $id_usuario = $_SESSION["id_usuario"];
     <div id="mensajes_usuario" class="contenedor nuevo_mensaje">
 
         <form id="form_nuevo_mensaje">
-            <textarea rows="1" name="mensaje" placeholder="Escribe tu mensaje..." autofocus required maxlength="255"></textarea>
+            <textarea rows="2" name="mensaje" placeholder="Escribe tu mensaje..." autofocus required maxlength="255"></textarea>
             <button type="submit">ENVIAR</button>
         </form>
     </div>
@@ -119,12 +119,12 @@ $id_usuario = $_SESSION["id_usuario"];
             data.mensajes.forEach(m => {
                 contenido += `
                 <tr>    
-                    <td>${m.fecha}</td>
-                    <td>${m.remitente}</td>
+                    <td id="hora">${m.fecha}</td>
+                    <td  id="remite">${m.remitente}</td>
                     <td>
                         <div class="burbuja">${m.mensaje}</div>
                     </td>
-                    <td>${m.estado}</td>
+                    <td id="estado">${m.estado}</td>
                 </tr>`;
             });
             cuerpo_mensaje.innerHTML = contenido;
@@ -179,7 +179,7 @@ $id_usuario = $_SESSION["id_usuario"];
     document.getElementById("form_nuevo_mensaje").addEventListener("submit", guardarMensaje);
     
     // intervalo de Actualización de Mensajes 
-    setInterval(cargarMensajes, 2000);
+    // setInterval(cargarMensajes, 2000);
     cargarMensajes();
 </script>
 
