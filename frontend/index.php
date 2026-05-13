@@ -24,7 +24,7 @@ header("Expires: 0");
 		<h2>Inicia sesión</h2>
 		<form class="formulario centrado" id="formCredencial" method ="post">
 			<label for="correo">Ingresa tu correo institucional</label>
-			<input type="email" id="correo" name="correo" maxlength="50" placeholder="ejemplo@institucion.cl..." required>
+			<input type="email" id="correo" name="correo" maxlength="50" placeholder="ejemplo@institucion.cl..." autofocus required>
 			
 			<label for="contrasena">Ingresa tu contraseña</label>
 			<input type="password" id="contrasena" name="contrasena" maxlength="30" placeholder="contraseña..." autocomplete="off" required>
