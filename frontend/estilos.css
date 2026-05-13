@@ -165,6 +165,12 @@ Estilo para dispositivos pequeños tablets, móviles
 		font-size: 0.6em;
 	}
 
+	#remite {
+		max-width: 70px;
+		overflow-wrap: break-word;
+		box-sizing: border-box;
+	}
+
 	.burbuja {
 		display: inline-block;
 		background-color: aliceblue;
