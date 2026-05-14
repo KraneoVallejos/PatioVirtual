@@ -14,7 +14,7 @@ USE `patiovirtual`;
 
 CREATE TABLE `usuario` (
     `id_usuario` INT AUTO_INCREMENT NOT NULL,
-    `nombre` VARCHAR(30) NOT NULL,
+    `nombre` VARCHAR(12) NOT NULL,
     `apellpat` VARCHAR(30) NOT NULL,
     `apellmat` VARCHAR(30) NOT NULL,
     `correo` VARCHAR(255) NOT NULL UNIQUE,
