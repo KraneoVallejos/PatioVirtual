@@ -32,7 +32,7 @@ require_once "../backend/db/conexion.php";
 		<form class="formulario izquierda" id="formRegistro" method="post">
 
 			<label for="nombre">nombre</label>
-			<input type="text" id="nombre" name="nombre" placeholder = "nombre... " autofocus required maxlength="30">
+			<input type="text" id="nombre" name="nombre" placeholder = "nombre... " autofocus required maxlength="12">
 			
 			
 			<label for="apellpat">primer apellido</label>
