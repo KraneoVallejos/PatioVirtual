@@ -31,9 +31,9 @@ $id_usuario = $_SESSION["id_usuario"];
 
 <body>
 
-    <h1>PATIO VIRTUAL</h1>
+    <h1 id="bienvenida_h1">PATIO VIRTUAL</h1>
 
-    <div id="bienvenida" class="contenedor centrado">
+    <div id="bienvenida_div" class="contenedor centrado">
         <h2>Bienvenido, <?php echo htmlspecialchars($usuario); ?>!</h2>
     
         <!-- Cerrar sesión -->
@@ -43,7 +43,7 @@ $id_usuario = $_SESSION["id_usuario"];
     </div>
 
     <!-- Contenedor historial de mensajes -->
-    <div id="mensajes" class="contenedor mensajes">
+    <div id="mensajes" class="contenedor">
         <table>
             <thead>
                 <tr>
@@ -179,7 +179,7 @@ $id_usuario = $_SESSION["id_usuario"];
     document.getElementById("form_nuevo_mensaje").addEventListener("submit", guardarMensaje);
     
     // intervalo de Actualización de Mensajes 
-    // setInterval(cargarMensajes, 2000);
+    // setInterval(cargarMensajes, 3000);
     cargarMensajes();
 </script>
 
