@@ -11,3 +11,4 @@ session_destroy(); // Destruye la sesión
 
 header("Location: ../../frontend/index.php");
 exit();
+?>
