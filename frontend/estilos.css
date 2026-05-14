@@ -7,8 +7,8 @@ Estilo para dispositivos pequeños tablets, móviles
 	body {
 		display: flex;
 		flex-direction: column;
-		gap: 1vw;
-		padding: 2vw;
+		gap: 0.5vw;
+		padding: 1vw;
 		margin: 0;
 		background-color: #b4fcdf;
 		font-family: Verdana, sans-serif; 
@@ -17,9 +17,8 @@ Estilo para dispositivos pequeños tablets, móviles
 	}
 	
 	.contenedor {
-		min-width: 60vw;
-		margin: auto; 
-		background-color: #f9a32a; 
+		align-self: center;
+		background-color: #1be7b7;
 		padding: 0.5em;
 		border-radius: 10px;
 		border-style: solid;
@@ -38,15 +37,16 @@ Estilo para dispositivos pequeños tablets, móviles
 	}
 
 	p {
-		margin: 0;
+		margin: 2px;
 		padding: 0;
-		font-size: 1.2em;
+		font-size: 1.1em;
 	}
 	
 	.formulario {
 		display: flex;
 		flex-direction: column;
 		padding: 0.3em;
+		box-sizing: border-box;
 	}
 
 	.centrado {
@@ -56,20 +56,24 @@ Estilo para dispositivos pequeños tablets, móviles
 	
 	.izquierda {
 		text-align: left;
-		padding-right: 10px;
 	}
 
-	#bienvenida {
+	#bienvenida_div {
 		min-width: max-content;
 		padding: 0.3em;
 	}
 
-	#bienvenida h2 {
+	#bienvenida_h1 {
+		font-size: 1.4em;
+		margin: 0;
+	}
+
+	#bienvenida_div h2 {
 		font-size: 1.2em;
 		margin: 0;
 	}
 
-	#bienvenida button {
+	#bienvenida_div button {
 		font-size: 0.7em;
 	}
 
@@ -119,7 +123,7 @@ Estilo para dispositivos pequeños tablets, móviles
 		border-radius: 5px;
 		width: 90%;
 		height: 10%;
-		top: 50%;
+		top: 40%;
 		left: 50%;
 		transform: translate(-50%, -50%);
 		font-size: 3vw;
@@ -128,23 +132,23 @@ Estilo para dispositivos pequeños tablets, móviles
 		text-align: center;
 	}
 
-	.mensajes {
+	#mensajes {
 		width: 100%; 
-		max-height: 50vh;
+		max-height: 60vh;
 		overflow-y: auto;
 		overflow-x: hidden;
 		padding: 0;
-		font-size: 3vw;
+		font-size: clamp (15px, 3vw, 18px);
 		box-sizing: border-box;
 	}
 
-	.mensajes table {
+	#mensajes table {
 		width: 100%;
 		border-collapse: collapse;
 		background-color: #00ffbf;
 	}
 
-	.mensajes th {
+	#mensajes th {
 		position: sticky;
 		top: 0;
 		background-color: darkorange;
@@ -153,7 +157,7 @@ Estilo para dispositivos pequeños tablets, móviles
 		font-size: 0.7em;
 	}
 
-	.mensajes td {
+	#mensajes td {
 		padding: 1px 2px;
 	}
 
@@ -166,7 +170,7 @@ Estilo para dispositivos pequeños tablets, móviles
 	}
 
 	#remite {
-		max-width: 70px;
+		max-width: max-content;
 		overflow-wrap: break-word;
 		box-sizing: border-box;
 	}
@@ -229,7 +233,7 @@ Estilo para dispositivos pequeños tablets, móviles
 	body {
 		display: flex;
 		flex-direction: column;
-		gap: 1vw;
+		gap: 0.5vw;
 		padding: 0.5vw;
 		margin: 0;
 		background-color: #b4c9fc;
@@ -269,6 +273,7 @@ Estilo para dispositivos pequeños tablets, móviles
 		display: flex;
 		flex-direction: column;
 		padding: 0.3em;
+		box-sizing: border-box;
 	}
 
 	.centrado {
@@ -278,7 +283,21 @@ Estilo para dispositivos pequeños tablets, móviles
 	
 	.izquierda {
 		text-align: left;
-		padding-right: 10px;
+	}
+
+	#bienvenida_div {
+		min-width: max-content;
+		padding: 0.3em;
+	}
+
+	#bienvenida_h1 {
+		font-size: 1.6em;
+		margin: 0;
+	}
+
+	#bienvenida_div h2 {
+		font-size: 1.4em;
+		margin: 0;
 	}
 
 	label {
@@ -336,32 +355,46 @@ Estilo para dispositivos pequeños tablets, móviles
 		text-align: center;
 	}
 
-	.mensajes {
+	#mensajes {
 		width: 95%; 
-		max-height: 50vh;
+		max-height: 65vh;
 		background-color: #2af95a; 
 		overflow-y: auto;
 		overflow-x: hidden;
 		padding: 0;
-		font-size: clamp( 13.5px, 2vw, 15px);
+		font-size: clamp(12px, 1.5vw, 13px);
 	}
 
-	.mensajes table {
+	#mensajes table {
 		width: 100%;
 		border-collapse: collapse;
 		background-color: #00ffbf;
 	}
 
-	.mensajes th {
+	#mensajes th {
 		position: sticky;
 		top: 0;
 		background-color: darkorange;
 		z-index: 2;
-		padding: 2px 8px;
+		padding: 1px 2px;
 	}
 
-	.mensajes td {
-		padding: 1px 8px;
+	#mensajes td {
+		padding: 1px 3px;
+	}
+
+	#hora, #remite, #estado {
+		text-align: center;
+	}
+
+	#hora, #estado {
+		font-size: 0.8em;
+	}
+
+	#remite {
+		max-width: max-content;
+		overflow-wrap: break-word;
+		box-sizing: border-box;
 	}
 
 	.burbuja {
@@ -369,10 +402,11 @@ Estilo para dispositivos pequeños tablets, móviles
 		background-color: aliceblue;
 		border: solid 1px black;
 		border-radius: 10px;
-		text-align: left;
+		align-self: flex-start;
+        text-align: left;
 		word-wrap: break-word;
 		white-space: pre-wrap;
-		padding: 3px 8px;
+		padding: 2px 4px;
 		max-width: 68vw;
 	}
 
